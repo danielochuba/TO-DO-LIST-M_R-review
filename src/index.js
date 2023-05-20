@@ -39,12 +39,12 @@ const removeTodo = (targetIndex) => {
 };
 
 const removeCompleted = () => {
-  let updtArr = [];
+  let updatedArray = [];
   const todoListArray = JSON.parse(localStorage.getItem('todos') || '[]');
 
-  updtArr = todoListArray.filter((todo) => todo.completed !== true);
-  tasksRefactor(updtArr);
-  localStorage.setItem('todos', JSON.stringify(updtArr));
+  updatedArray = todoListArray.filter((todo) => todo.completed !== true);
+  tasksRefactor(updatedArray);
+  localStorage.setItem('todos', JSON.stringify(updatedArray));
   // eslint-disable-next-line no-restricted-globals
   location.reload();
 };
@@ -73,16 +73,16 @@ const updateList = (todos) => {
 
 const newTodo = (e) => {
   e.preventDefault();
-  const newTask = document.getElementById('taskInput').value;
+  const newTask = document.getElementById('taskInput');
   const todos = JSON.parse(localStorage.getItem('todos') || '[]');
 
   const newTodo = {
-    description: newTask,
+    description: newTask.value,
     completed: false,
     id: todos.length,
   };
 
-  document.getElementById('taskInput').value = '';
+  newTask.value = '';
   localStorage.setItem('todos', JSON.stringify([...todos, newTodo]));
   updateList([...todos, newTodo]);
 };

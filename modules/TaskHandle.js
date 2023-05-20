@@ -4,9 +4,9 @@ const taskSection = document.querySelector('.task-section');
  * @param {Array} newTodos An array of new todo items to update the list with.
  */
 const tasksRefactor = (newTodos) => {
-  const updtArr = newTodos.map((todo, index) => ({ ...todo, id: index + 1 }));
-  localStorage.setItem('todos', JSON.stringify(updtArr));
-  const description = updtArr.map(
+  const updatedArray = newTodos.map((todo, index) => ({ ...todo, id: index + 1 }));
+  localStorage.setItem('todos', JSON.stringify(updatedArray));
+  const description = updatedArray.map(
     (task) => `
         <li class="fill task-list ${task.completed ? 'completed' : ''}" data-id="${task.id}">
           <input type="checkbox" ${task.completed ? 'checked' : ''} class="checkbox"/>
